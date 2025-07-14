@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
+from datetime import datetime
 
 # Create your views here.
 
@@ -19,3 +20,16 @@ def String_Only_Filter(request):
     'headline':    'welcome_to my blog!'
     }
     return render(request, 'string_filter.html', context)
+
+def date_time(request):
+    da = datetime.now()
+    return render(request, 'dateAndTime.html', {'date': da})
+
+def if_condition(request):
+    content = {
+        'sn' : True,
+        'mn' : True,
+        'val1':'django',
+        'val2':'Jeffery'
+    }
+    return render(request,'if_condition.html',content)

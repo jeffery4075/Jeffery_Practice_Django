@@ -22,4 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('filter',views.First_Function),
     path('string_filter',views.String_Only_Filter),
+    path('date',views.date_time),
+    path('if_condi',views.if_condition),
 ]

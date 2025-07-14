@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>If condition 1</h1>
+
+    {% if sn and mn %}
+        <p> the condition has been true and it has been entered into the loop</p>
+    {% endif %}
+
+
+    <h1>If condition 2</h1>
+    {% if val1 == 'django1' %}
+        <p> condition 2 has been satisfied</p>
+    {% endif %}
+
+    <h1>If condition 3</h1>
+    {% if val2|length >= 5 %}
+        <p> condition 3 has been satisfied</p>
+    {% endif %}
+</body>
+</html>
