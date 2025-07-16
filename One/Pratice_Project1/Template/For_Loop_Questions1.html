@@ -10,12 +10,39 @@
 <body>
     <h1>Practice Question 1: Display Student Name and Marks
         Task:Loop through the students and display their name and marks.</h1>
-        <ul>
-            {% for key,value in students.items %}
-                Name of student:-{{value.name}}
-                <p>Mark of the student:-{{value.marks}}</p>
+    <ul>
+        {% for key,value in students.items %}
+        Name of student:-{{value.name}}
+        <p>Mark of the student:-{{value.marks}}</p>
+        {% endfor %}
+    </ul>
+    <br><br>
+
+    <h1>Practice Question 2: Display Subjects for Each Student</h1>
+    <ul>
+        {% for key,value in students.items %}
+        <li>
+            {{ value.name }} is enrolled in:
+            {% for sub in value.subjects %}
+                {{sub}},
             {% endfor %}
-        </ul>
+        </li>
+        {% endfor %}
+    </ul>
+    <br><br>
+    <h1>Display Students with Marks Greater Than 80</h1>
+    {% for key , value in students.items %}
+        {% if value.marks >= 80 %}
+            <p>{{ value.name }}: {{ value.marks }}</p>
+        {% endif %}
+    {% endfor %}
+    <br><br>
+    <h1>Practice Question 4: Display First Student's Information</h1>
+    {% for key, value in students.items %}
+        {% if forloop.first %}
+        <p>{{value.name}}(Roll:-{{value.roll}},Marks:-{{value.marks}}) </p>
+        {% endif %}
+    {% endfor %}
 </body>
 
 </html>
