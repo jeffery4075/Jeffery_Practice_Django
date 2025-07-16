@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Practice Question 1: Display Student Name and Marks
+        Task:Loop through the students and display their name and marks.</h1>
+        <ul>
+            {% for key,value in students.items %}
+                Name of student:-{{value.name}}
+                <p>Mark of the student:-{{value.marks}}</p>
+            {% endfor %}
+        </ul>
+</body>
+
+</html>

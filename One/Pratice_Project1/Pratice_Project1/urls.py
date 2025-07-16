@@ -24,4 +24,7 @@ urlpatterns = [
     path('string_filter',views.String_Only_Filter),
     path('date',views.date_time),
     path('if_condi',views.if_condition),
+    path('for_loop',views.for_loop1),
+    path('for_loop2',views.learn_django),
+    path('student_view', views.student_view),
 ]

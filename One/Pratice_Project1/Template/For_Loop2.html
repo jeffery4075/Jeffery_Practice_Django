@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> this is the second for loop HTML page and manin items are shown</h1>
+    {% for item in student %}
+        {{ item }}
+    {% endfor %}
+<br><br>
+<h2>Second items are being shown</h2>
+<ul>
+    {% for key, value in student.items %}
+        {{key}}: {{value}}<br>
+    {% endfor %}
+</ul>
+<br><br>
+
+<h2>Third items are being shown</h2>
+<ul>
+    {% for key, value in student.items %}
+        {% for k , v in value.items %}
+            {{k}}: {{v}}<br>
+        {% endfor %}
+    {% endfor %}
+</body>
+</html>
