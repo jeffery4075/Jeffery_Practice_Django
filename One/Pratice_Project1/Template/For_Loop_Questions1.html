@@ -16,7 +16,7 @@
         <p>Mark of the student:-{{value.marks}}</p>
         {% endfor %}
     </ul>
-    <br><br>
+    <br>
 
     <h1>Practice Question 2: Display Subjects for Each Student</h1>
     <ul>
@@ -24,25 +24,53 @@
         <li>
             {{ value.name }} is enrolled in:
             {% for sub in value.subjects %}
-                {{sub}},
+            {{sub}},
             {% endfor %}
         </li>
         {% endfor %}
     </ul>
-    <br><br>
+    <br>
+
     <h1>Display Students with Marks Greater Than 80</h1>
     {% for key , value in students.items %}
-        {% if value.marks >= 80 %}
-            <p>{{ value.name }}: {{ value.marks }}</p>
-        {% endif %}
+    {% if value.marks >= 80 %}
+    <p>{{ value.name }}: {{ value.marks }}</p>
+    {% endif %}
     {% endfor %}
-    <br><br>
+    <br>
+
     <h1>Practice Question 4: Display First Student's Information</h1>
     {% for key, value in students.items %}
-        {% if forloop.first %}
-        <p>{{value.name}}(Roll:-{{value.roll}},Marks:-{{value.marks}}) </p>
-        {% endif %}
+    {% if forloop.first %}
+    <p>{{value.name}}(Roll:-{{value.roll}},Marks:-{{value.marks}}) </p>
+    {% endif %}
     {% endfor %}
+
+    <h1>Practice Question 5: Display Only Students Who Are Enrolled in "Math"</h1>
+    {% for key , value in students.items %}
+    {% for sub in value.subjects %}
+    {% if sub == 'Math' %}
+    <li>{{value.name}} is enrolled in {{value.subjects}}</li>
+
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    <br>
+
+    <h1>Practice Question 13: Display All Students, But Only Their First Two Subjects</h1>
+<h1>Students and Their First Two Subjects</h1>
+<ul>
+    {% for key, value in students.items %}
+        <li>
+            {{ value.name }} is enrolled in 
+            {% for subject in value.subjects|slice:":2" %}
+                {{ subject }},
+            {% endfor %}
+        </li>
+    {% endfor %}
+</ul>
+
+
 </body>
 
 </html>
