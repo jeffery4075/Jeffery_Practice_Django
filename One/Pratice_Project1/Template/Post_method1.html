@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label>Enter the First Number: </label>
+        <input type="text" placeholder="First Number" name="first_number" value="{{ da1 }}">
+        <br><br>
+        <label>Enter the Second Number: </label>
+        <input type="text" placeholder="Second Number" name="second_number" value="{{ da2 }}">
+        <br><br>
+        <button type="submit">Submit</button>{{ da_sum }}
+    </form>
+</body>
+</html>

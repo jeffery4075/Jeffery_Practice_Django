@@ -58,3 +58,48 @@ def student_view(request):
     }
     return render(request, 'For_Loop_Questions1.html', context={'students': students})
 
+def simple_get1(request):
+
+    val1 = int(request.POST.get('First_number',0))
+    val2 = int(request.POST.get('Second_number',0))
+    
+    res = val1 + val2
+    return render(request,'Get_method1.html',{'sum':res})
+
+def main_post1(request):
+    if request.method == "POST":
+        raw1 = request.POST.get('first_number',0)
+        raw2 = request.POST.get('second_number',0)
+        try:
+            val1 = int(raw1)
+            val2 = int(raw2)
+            sum = val1 +val2
+            data = {
+                'da1' : val1,
+                'da2' : val2,
+                'da_sum' : sum
+            }
+        except ValueError:
+            sum = "Enter valid integers."
+        return render(request,'Post_method1.html',data)
+    else:
+        return render(request,'Post_method1.html')
+
+def temp_converter(request):
+    if request.method == "POST":
+        raw1 = request.POST.get('first_temp',0)
+        temp = {}
+        try:
+            Celsius = float(raw1)
+            Fahrenheit = Celsius * 9 / 5 + 32
+            temp = {
+                'Ce': Celsius,
+                'Fa': Fahrenheit
+            }
+        except ValueError:
+            temp = {
+                'error': "Enter a valid temp"
+            }
+        return render(request, 'Temperature_Converter.html', temp)
+    else:
+        return render(request, 'Temperature_Converter.html')

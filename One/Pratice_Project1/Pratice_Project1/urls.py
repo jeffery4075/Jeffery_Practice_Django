@@ -27,4 +27,7 @@ urlpatterns = [
     path('for_loop',views.for_loop1),
     path('for_loop2',views.learn_django),
     path('student_view', views.student_view),
+    path('simple_get1',views.simple_get1),
+    path('main_post1',views.main_post1),
+    path('temp_converter',views.temp_converter),
 ]
