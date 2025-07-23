@@ -103,3 +103,33 @@ def temp_converter(request):
         return render(request, 'Temperature_Converter.html', temp)
     else:
         return render(request, 'Temperature_Converter.html')
+
+
+def currency_result(request):
+    # Get values from the session
+    amount_sar = request.session.get('amount_sar')
+    amount_inr = request.session.get('amount_inr')
+    return render(request, 'currency_result.html', {'amount_sar': amount_sar, 'amount_inr': amount_inr})
+
+    
+def currency_converter(request):
+    if request.method == "POST":
+        raw1 = request.POST.get('amount',0)
+
+        try:
+            exchange_rate = 23
+            amount_in_sar  = float(raw1)
+            amount_in_inr = amount_in_sar * exchange_rate
+
+            # Store the result in session
+            request.session['amount_sar'] = amount_in_sar
+            request.session['amount_inr'] = amount_in_inr
+
+            return redirect('currency_result')
+        except ValueError:
+            content ={
+                'Error_key':'Enter a valid input',
+            }
+            return render(request,'Currency_conversion.html',content)
+    else:
+        return render(request,'Currency_conversion.html')

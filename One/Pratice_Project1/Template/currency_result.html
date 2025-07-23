@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversion Result</title>
+</head>
+<body>
+    <h1>Currency Conversion Result</h1>
+    
+    {% if amount_sar and amount_inr %}
+        <p>Amount in SAR: ر.س {{ amount_sar }}</p>
+        <p>Amount in INR: ₹{{ amount_inr }}</p>
+    {% else %}
+        <p>No result found!</p>
+    {% endif %}
+    
+    <a href="{% url 'currency_converter' %}">Convert another amount</a>
+</body>
+</html>

@@ -30,4 +30,6 @@ urlpatterns = [
     path('simple_get1',views.simple_get1),
     path('main_post1',views.main_post1),
     path('temp_converter',views.temp_converter),
+    path('currency_result', views.currency_result, name='currency_result'),
+    path('currency_converter',views.currency_converter,name='currency_converter'),
 ]
