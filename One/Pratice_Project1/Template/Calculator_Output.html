@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Result</h1>
+    {% if recived_error %}
+        <p style="color: red;">{{ recived_error }}</p>
+
+        {% elif recived_res %}
+            <p>Result of {{recived_oper}} of {{recived_num1}} and {{recived_num2}}:- {{recived_res}}</p>
+    {% endif %}
+    <br>
+    <a href="{% url 'calcu_main' %}"><button>Back</button></a>
+</body>
+</body>
+</html>

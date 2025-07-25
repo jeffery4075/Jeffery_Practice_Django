@@ -133,3 +133,56 @@ def currency_converter(request):
             return render(request,'Currency_conversion.html',content)
     else:
         return render(request,'Currency_conversion.html')
+    
+
+def calcu_output(request):
+    recived_res = request.session.get('tarnsfer_result')
+    recived_num1 = request.session.get('tarnsfer_num1')
+    recived_num2 = request.session.get('tarnsfer_num2')
+    recived_oper = request.session.get('tarnsfer_oper')
+    recived_error = request.session.get('tarnsfer_error')
+
+    return render(request,'Calculator_Output.html',{'recived_res':recived_res,'recived_num1':recived_num1,
+                                                   'recived_num2':recived_num2,'recived_oper':recived_oper,
+                                                   'recived_error':recived_error})
+
+def calcu_main(request):
+    if request.method == "POST":
+        raw1 = request.POST.get('first_number',0)
+        raw2 = request.POST.get('second_number',0)
+
+        result = None
+        error = None
+
+        try:
+            num1 = float(raw1)
+            num2 = float(raw2)
+            oper = request.POST.get('operation',None)
+
+            if oper == "Add":
+                result = num1 + num2
+            elif oper == "Subtract":
+                result = num1 - num2
+            elif oper == "Multiply":
+                result = num1 * num2
+            elif oper == "Divide":
+                if num2 == 0:
+                    error = "Error: Cannot divide by zero!"
+                else:
+                    result = num1 / num2
+            else:
+                error = "Invalid operation selected."
+
+            request.session['tarnsfer_result'] = result
+            request.session['tarnsfer_num1'] = num1
+            request.session['tarnsfer_num2'] = num2
+            request.session['tarnsfer_oper'] = oper
+            request.session['tarnsfer_error'] = error
+
+            return redirect('calcu_output')
+        except ValueError:
+            error_msg={'error_key':'Enter a valid input'}
+            return render(request,'Calculator_main.html',error_msg)
+    
+    else:
+        return render(request,'Calculator_main.html')
