@@ -4,4 +4,8 @@ class Profile(models.Model):
     Name = models.CharField(max_length=150)
     Email = models.CharField(max_length=100)
     city  = models.CharField(max_length=100)
+# roll = models.IntegerField()
+
+def __str__(self):
+    return self.Name
 
