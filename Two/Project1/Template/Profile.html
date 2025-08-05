@@ -7,7 +7,7 @@
 </head>
 <body>
     <form action="" method="post">
-        { csrf_token }
+        {% csrf_token %}
         <fieldset>
             <legend>Student Details</legend>
             <label for="">Enter First Name:</label>
@@ -22,5 +22,18 @@
             <a href=""><button type="button">Submit</button></a>
         </fieldset>
     </form>
+
+<h1>All Profiles</h1>
+  {% if data %}
+    <ul>
+      {% for profile in data %}
+        <li>
+          {{ profile.Name }} &mdash; {{ profile.Email }} &mdash; {{ profile.city }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No profiles added yet.</p>
+  {% endif %}
 </body>
 </html>
